@@ -201,7 +201,7 @@ function render(ctx, spArray, reqID, dt, som)
 //-------------------------------------------------------------
 function canvasClickHandler(ev, ctx, spArray, som)
 {
-	if (spArray[0].clickedPixelCheck(ev))
+	if (spArray[0].clickedPixelCheck(ev) || spArray[1].clickedPixelCheck(ev))
 	{
 		var dim = spArray.length;
 
