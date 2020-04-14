@@ -20,7 +20,16 @@ class SpriteImage
 		
 		//rato
 		this.clickableIni = clickable;
-		this.clickable = clickable;			
+		this.clickable = clickable;
+
+		this.up= false;
+		this.down= false;
+		this.left= false;
+		this.right= false;
+		this.mouseDown= false;
+		this.draggable= false;
+		this.mouseOffsetX = 0;
+		this.mouseOffsetY = 0;			
 	}
 
 
@@ -122,8 +131,22 @@ class SpriteImage
 
 			var pixelIndex = yLocal * this.width + xLocal;
 			pixelIndex = pixelIndex * 4 + 3;
-			console.log(pixelIndex);
-			console.log(this.imageData.data[pixelIndex]);
+			if(this.imageData.data[pixelIndex]){
+				return true;
+			}
+			return false;
+		}
+		else{
+			return false;
+		}
+	}
+	mouseOverPixelCheck(ev){
+		if(this.mouseOverBoundingBox(ev)){
+			var xLocal = Math.round(ev.offsetX - this.x);
+			var yLocal = Math.round(ev.offsetY - this.y);
+
+			var pixelIndex = yLocal * this.width + xLocal;
+			pixelIndex = pixelIndex * 4 + 3;
 			if(this.imageData.data[pixelIndex]){
 				return true;
 			}
